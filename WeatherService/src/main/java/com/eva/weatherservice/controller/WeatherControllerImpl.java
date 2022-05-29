@@ -19,6 +19,7 @@ public class WeatherControllerImpl implements WeatherController {
     }
 
     @GetMapping("/{city}")
+    @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<?> getWeatherInCity(@PathVariable String city) {
         return Optional.ofNullable(weatherService.getCurrentWeatherByCity(city))
                 .map(weather -> ResponseEntity.ok().body(weather))
